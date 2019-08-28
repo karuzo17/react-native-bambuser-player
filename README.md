@@ -12,19 +12,22 @@
 ## Requirements
 
 Version `0.0.10` and above of this React Native component requires the version `0.9.22` or higher of the iOS libbambuser SDK.
+Version `0.0.13` and above of this React Native component requires React Native `0.60` or higher.
 
 ## Installation
 
 1. Add `react-native-bambuser-player` to your React Native project.  
     `$ yarn add react-native-bambuser-player --save`
-2. Download iOS & Android SDKs from https://dashboard.bambuser.com/developer
+2. Download Android SDK from https://dashboard.bambuser.com/developer
 3. Android only: Head over to https://bambuser.com/docs/playback/android-player/ and follow the sections [Add the Bambuser SDK for Android](https://bambuser.com/docs/playback/android-player/#add-the-productname-sdk-for-android) and [Add required Android app permissions](https://bambuser.com/docs/playback/android-player/#add-required-android-app-permissions) for the Android project within your React Native project.
     **Important note:** when adding the libbambuser subproject, make sure you name it: **libbambuser**, the React Native component will look for this subproject when building your React Native app.
-4. iOS only: Go to https://bambuser.com/docs/playback/ios-player/ and follow the sections [Add dependencies](https://bambuser.com/docs/playback/ios-player/#installing-dependencies-manually) and [Add the playback SDK](https://bambuser.com/docs/playback/ios-player/#add-the-playback-sdk) for the iOS project within your React Native project.
+4. iOS only: Go to https://bambuser.com/docs/playback/ios-player/ and follow the sections [Installing dependencies using CocoaPods](https://bambuser.com/docs/playback/ios-player/#installing-dependencies-using-cocoapods).
+
 
 ### To automatically link this React Native module to your Xcode/Android projects run the following command:
 
-`$ react-native link react-native-bambuser-player`
+If you are using React Native `0.60` or above run: `$ cd ios && pod install && cd ..`.
+If you are using an older version of React Native please refer back to README.md in this repository for specific version.
 
 
 ### If you want to manually add this React Native module to your Xcode/Android projects, then follow these steps:
