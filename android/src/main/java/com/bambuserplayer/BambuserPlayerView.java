@@ -109,9 +109,10 @@ public class BambuserPlayerView extends RelativeLayout {
     }
 
     void seekTo(int position) {
+        int positionInMs = position * 1000;
         if (playerExists()) {
             if (mBroadcastPlayer.getState() != PlayerState.CLOSED) {
-                mBroadcastPlayer.seekTo(position);
+                mBroadcastPlayer.seekTo(positionInMs);
                 sendOnProgressUpdate();
             }
         }
