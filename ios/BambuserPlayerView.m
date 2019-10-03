@@ -108,7 +108,9 @@
 }
 
 -(void)setSeekTo:(float)_seekTo {
-  if (_seekTo > -1 || ([bambuserPlayer timeShiftModeEnabled] && _seekTo >= bambuserPlayer.seekableStart && _seekTo <= bambuserPlayer.seekableEnd)) {
+  float seekToPosition = _seekTo;
+  if (seekToPosition < 0) seekToPosition = 0;
+  if (seekToPosition > -1 || ([bambuserPlayer timeShiftModeEnabled] && seekToPosition >= bambuserPlayer.seekableStart && seekToPosition <= bambuserPlayer.seekableEnd)) {
     [bambuserPlayer seekTo:_seekTo];
   }
 }
