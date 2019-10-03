@@ -169,7 +169,7 @@
   } else if (bambuserPlayer.status == kBambuserPlayerStateIdle) {
     [self loadAndPlay];
   } else {
-    if (round([bambuserPlayer playbackPosition]) >= duration) {
+    if (round([bambuserPlayer playbackPosition]) >= duration && ![bambuserPlayer live]) {
       [bambuserPlayer seekTo:0];
     }
     [bambuserPlayer playVideo];
