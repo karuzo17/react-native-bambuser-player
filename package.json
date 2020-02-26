@@ -19,5 +19,8 @@
   "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2"
+  },
+  "dependencies": {
+    "jetifier": "^1.6.5"
   }
 }
