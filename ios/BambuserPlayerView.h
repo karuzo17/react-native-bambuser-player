@@ -3,6 +3,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 // import RCTComponent.h
 #if __has_include(<React/RCTComponent.h>)
@@ -18,6 +19,7 @@
 @property (nonatomic) NSString *resourceUri;
 @property (nonatomic) NSString *applicatonId;
 @property (nonatomic) NSString *videoScaleMode;
+@property (nonatomic) NSString *ignoreSilentSwitch;
 @property (nonatomic) NSString *requiredBroadcastState;
 @property (nonatomic) BOOL timeShiftMode;
 @property (nonatomic) float volume;

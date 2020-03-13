@@ -45,6 +45,10 @@ RCT_CUSTOM_VIEW_PROPERTY(videoScaleMode, NSString, BambuserPlayerView) {
   [view setVideoScaleMode:json];
 }
 
+RCT_CUSTOM_VIEW_PROPERTY(ignoreSilentSwitch, NSString, BambuserPlayerView) {
+  [view setIgnoreSilentSwitch:json];
+}
+
 RCT_CUSTOM_VIEW_PROPERTY(requiredBroadcastState, NSString, BambuserPlayerView) {
   [view setRequiredBroadcastState:json];
 }
