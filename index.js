@@ -17,12 +17,19 @@ const VIDEO_SCALE_MODE = {
   SCALE_TO_FILL: 'scaleToFill'
 };
 
+const IGNORE_SILENT_SWITCH = {
+  INHERIT: 'inherit',
+  IGNORE: 'ignore',
+  OBEY: 'obey'
+};
+
 const propTypes = {
   applicationId: PropTypes.string,
   resourceUri: PropTypes.string,
   timeShiftMode: PropTypes.bool,
   volume: PropTypes.number,
   videoScaleMode: PropTypes.oneOf(Object.values(VIDEO_SCALE_MODE)),
+  ignoreSilentSwitch: PropTypes.oneOf(Object.values(IGNORE_SILENT_SWITCH)),
   requiredBroadcastState: PropTypes.oneOf(Object.values(REQUIRED_BROADCAST_STATE)),
   onCurrentViewerCountUpdate: PropTypes.func,
   onTotalViewerCountUpdate: PropTypes.func,
@@ -101,7 +108,7 @@ class RNBambuserPlayer extends React.Component {
       this.props.onTotalViewerCountUpdate(event.nativeEvent.viewers);
     }
   }
-  
+
   _onLoading() {
     if (typeof this.props.onLoading === 'function') {
       this.props.onLoading();
@@ -162,6 +169,7 @@ class RNBambuserPlayer extends React.Component {
 RNBambuserPlayer.propTypes = propTypes;
 RNBambuserPlayer.REQUIRED_BROADCAST_STATE = REQUIRED_BROADCAST_STATE;
 RNBambuserPlayer.VIDEO_SCALE_MODE = VIDEO_SCALE_MODE;
+RNBambuserPlayer.IGNORE_SILENT_SWITCH = IGNORE_SILENT_SWITCH;
 
 const BambuserPlayerView = requireNativeComponent('BambuserPlayerView', RNBambuserPlayer, {
   nativeOnly: {

@@ -14,13 +14,14 @@
   BOOL viewReady;
 }
 
-@synthesize resourceUri, applicatonId, videoScaleMode, requiredBroadcastState, timeShiftMode, volume, duration, seekTo, play, pause, stop;
+@synthesize resourceUri, applicatonId, videoScaleMode, ignoreSilentSwitch, requiredBroadcastState, timeShiftMode, volume, duration, seekTo, play, pause, stop;
 
 -(instancetype)init {
   self = [super init];
   if (self) {
     viewReady = NO;
     videoScaleMode = VideoScaleAspectFit;
+    ignoreSilentSwitch = @"inherit";
     requiredBroadcastState = kBambuserBroadcastStateAny;
     timeShiftMode = NO;
     volume = .5f;
@@ -139,6 +140,12 @@
   }
 }
 
+-(void)setIgnoreSilentSwitch:(NSString *)_ignoreSilentSwitch {
+  if (_ignoreSilentSwitch != nil) {
+    ignoreSilentSwitch = _ignoreSilentSwitch;
+  }
+}
+
 -(void)setRequiredBroadcastState:(NSString *)_requiredBroadcastState {
   if (_requiredBroadcastState != nil) {
     if ([_requiredBroadcastState isEqualToString:@"any"]) {
@@ -185,6 +192,11 @@
 }
 
 -(void)loadAndPlay {
+  if([self.ignoreSilentSwitch isEqualToString:@"ignore"]) {
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+  } else if([self.ignoreSilentSwitch isEqualToString:@"obey"]) {
+     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
+  }
   if (self.onLoading) {
     self.onLoading(nil);
   }

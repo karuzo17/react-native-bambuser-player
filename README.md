@@ -95,6 +95,9 @@ volume: Number
 videoScaleMode: String
 // RNBambuserPlayer.VIDEO_SCALE_MODE.ASPECT_FIT || RNBambuserPlayer.VIDEO_SCALE_MODE.ASPECT_FILL || RNBambuserPlayer.VIDEO_SCALE_MODE.SCALE_TO_FILL
 
+ignoreSilentSwitch: String
+// RNBambuserPlayer.IGNORE_SILENT_SWITCH.INHERIT || RNBambuserPlayer.IGNORE_SILENT_SWITCH.IGNORE || RNBambuserPlayer.IGNORE_SILENT_SWITCH.OBEY
+
 requiredBroadcastState: String
 // The player will only play this broadcast state.
 // RNBambuserPlayer.REQUIRED_BROADCAST_STATE.ANY || RNBambuserPlayer.REQUIRED_BROADCAST_STATE.LIVE || RNBambuserPlayer.REQUIRED_BROADCAST_STATE.ARCHIVED
