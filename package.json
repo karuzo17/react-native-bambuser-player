@@ -18,7 +18,7 @@
   "author": "Peter Löfquist <pete@bambuser.com>",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": "^0.60.0"
   },
   "dependencies": {
     "jetifier": "^1.6.5"
