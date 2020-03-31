@@ -145,6 +145,10 @@ class RNBambuserPlayer extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.stop();
+  }
+
   render() {
     return (
       <BambuserPlayerView
