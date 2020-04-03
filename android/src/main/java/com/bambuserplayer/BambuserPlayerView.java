@@ -2,6 +2,8 @@ package com.bambuserplayer;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
@@ -11,9 +13,6 @@ import com.bambuser.broadcaster.SurfaceViewWithAutoAR;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.uimanager.ThemedReactContext;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Copyright Bambuser AB 2018
@@ -32,7 +31,7 @@ public class BambuserPlayerView extends RelativeLayout {
     boolean _timeShiftMode = false;
     float _volume = 0.5f;
     int _duration = -1;
-    Timer mProgressTimer;
+    final Handler mMainThreadHandler = new Handler(Looper.getMainLooper());
 
     public BambuserPlayerView(ThemedReactContext context, BambuserPlayerViewViewManager manager) {
         super(context);
@@ -195,22 +194,21 @@ public class BambuserPlayerView extends RelativeLayout {
         }
     }
 
+    private final Runnable mProgressRunnable = new Runnable() {
+        @Override
+        public void run() {
+            sendOnProgressUpdate();
+            mMainThreadHandler.postDelayed(mProgressRunnable, 1000);
+        }
+    };
+
     void startTimer() {
         stopTimer();
-        mProgressTimer = new Timer();
-        mProgressTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                sendOnProgressUpdate();
-            }
-        }, 0, 1000);
+        mMainThreadHandler.postDelayed(mProgressRunnable, 1000);
     }
 
     void stopTimer() {
-        if (mProgressTimer != null) {
-            mProgressTimer.cancel();
-            mProgressTimer.purge();
-        }
+        mMainThreadHandler.removeCallbacks(mProgressRunnable);
     }
 
     BroadcastPlayer.Observer mBroadcastPlayerObserver = new BroadcastPlayer.Observer() {
