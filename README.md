@@ -13,6 +13,7 @@
 
 Version `0.0.10` and above of this React Native component requires the version `0.9.22` or higher of the iOS libbambuser SDK.
 Version `0.0.13` and above of this React Native component requires React Native `0.60` or higher.
+Version `0.0.19` and above of this React Native component requires the version `0.9.28` of the iOS libbambuser SDK and version `0.9.21` of the Android libbambuser SDK.
 
 ## Installation
 
@@ -101,6 +102,10 @@ ignoreSilentSwitch: String
 requiredBroadcastState: String
 // The player will only play this broadcast state.
 // RNBambuserPlayer.REQUIRED_BROADCAST_STATE.ANY || RNBambuserPlayer.REQUIRED_BROADCAST_STATE.LIVE || RNBambuserPlayer.REQUIRED_BROADCAST_STATE.ARCHIVED
+
+latencyMode: String
+// Set whether the player should prioritize low latency or playback with less interruptions.
+// RNBambuserPlayer.LATENCY_MODE.LOW || RNBambuserPlayer.LATENCY_MODE.HIGH
 
 onCurrentViewerCountUpdate: function(viewers)
 // Callback when current viewer count is updated.
