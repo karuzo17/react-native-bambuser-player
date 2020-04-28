@@ -23,6 +23,11 @@ const IGNORE_SILENT_SWITCH = {
   OBEY: 'obey'
 };
 
+const LATENCY_MODE = {
+  LOW: 'low',
+  HIGH: 'high',
+};
+
 const propTypes = {
   applicationId: PropTypes.string,
   resourceUri: PropTypes.string,
@@ -31,6 +36,7 @@ const propTypes = {
   videoScaleMode: PropTypes.oneOf(Object.values(VIDEO_SCALE_MODE)),
   ignoreSilentSwitch: PropTypes.oneOf(Object.values(IGNORE_SILENT_SWITCH)),
   requiredBroadcastState: PropTypes.oneOf(Object.values(REQUIRED_BROADCAST_STATE)),
+  latencyMode: PropTypes.oneOf(Object.values(LATENCY_MODE)),
   onCurrentViewerCountUpdate: PropTypes.func,
   onTotalViewerCountUpdate: PropTypes.func,
   onReady: PropTypes.func,
@@ -174,6 +180,7 @@ RNBambuserPlayer.propTypes = propTypes;
 RNBambuserPlayer.REQUIRED_BROADCAST_STATE = REQUIRED_BROADCAST_STATE;
 RNBambuserPlayer.VIDEO_SCALE_MODE = VIDEO_SCALE_MODE;
 RNBambuserPlayer.IGNORE_SILENT_SWITCH = IGNORE_SILENT_SWITCH;
+RNBambuserPlayer.LATENCY_MODE = LATENCY_MODE;
 
 const BambuserPlayerView = requireNativeComponent('BambuserPlayerView', RNBambuserPlayer, {
   nativeOnly: {

@@ -31,6 +31,7 @@ public class BambuserPlayerView extends RelativeLayout {
     boolean _timeShiftMode = false;
     float _volume = 0.5f;
     int _duration = -1;
+    BroadcastPlayer.LatencyMode _latencyMode = BroadcastPlayer.LatencyMode.LOW;
     final Handler mMainThreadHandler = new Handler(Looper.getMainLooper());
 
     public BambuserPlayerView(ThemedReactContext context, BambuserPlayerViewViewManager manager) {
@@ -142,6 +143,12 @@ public class BambuserPlayerView extends RelativeLayout {
         }
     }
 
+    void setLatencyMode(BroadcastPlayer.LatencyMode latencyMode) {
+        if (latencyMode != null) {
+            _latencyMode = latencyMode;
+        }
+    }
+
     void setTimeShiftMode(boolean timeShiftMode) {
         _timeShiftMode = timeShiftMode;
     }
@@ -174,6 +181,7 @@ public class BambuserPlayerView extends RelativeLayout {
         mBroadcastPlayer.setViewerCountObserver(mBroadcastViewerCountObserver);
         mBroadcastPlayer.setTimeshiftMode(_timeShiftMode);
         mBroadcastPlayer.setAcceptType(_requiredBroadcastState);
+        mBroadcastPlayer.setLatencyMode(_latencyMode);
         mBroadcastPlayer.setSurfaceView(mVideoSurfaceView);
         mBroadcastPlayer.setAudioVolume(_volume);
         mBroadcastPlayer.load();

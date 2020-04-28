@@ -14,7 +14,7 @@
   BOOL viewReady;
 }
 
-@synthesize resourceUri, applicatonId, videoScaleMode, ignoreSilentSwitch, requiredBroadcastState, timeShiftMode, volume, duration, seekTo, play, pause, stop;
+@synthesize resourceUri, applicatonId, videoScaleMode, ignoreSilentSwitch, requiredBroadcastState, timeShiftMode, volume, duration, seekTo, play, pause, stop, latencyMode;
 
 -(instancetype)init {
   self = [super init];
@@ -26,6 +26,7 @@
     timeShiftMode = NO;
     volume = .5f;
     duration = -1;
+    latencyMode = @"low";
     bambuserPlayer = [[BambuserPlayer alloc] init];
     bambuserPlayer.delegate = self;
     [self addSubview:bambuserPlayer];
@@ -158,6 +159,16 @@
   }
 }
 
+-(void)setLatencyMode:(NSString *)_latencyMode {
+  if (_latencyMode != nil) {
+    if ([_latencyMode isEqualToString:@"low"]) {
+      latencyMode = [NSString stringWithFormat:@"%d", BambuserPlayerLatencyModeLow];
+    } else if ([_latencyMode isEqualToString:@"high"]) {
+      latencyMode = [NSString stringWithFormat:@"%d", BambuserPlayerLatencyModeHigh];
+    }
+  }
+}
+
 -(void)setTimeShiftMode:(BOOL)_timeShiftMode {
   timeShiftMode = _timeShiftMode;
 }
@@ -205,6 +216,7 @@
   bambuserPlayer.volume = volume;
   bambuserPlayer.requiredBroadcastState = [requiredBroadcastState intValue];
   bambuserPlayer.videoScaleMode = [videoScaleMode intValue];
+  bambuserPlayer.latencyMode = [latencyMode intValue];
   [bambuserPlayer playVideo:resourceUri];
 }
 

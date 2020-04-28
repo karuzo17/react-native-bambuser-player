@@ -25,6 +25,11 @@ public class BambuserPlayerViewViewManager extends ViewGroupManager<BambuserPlay
         "archived", BroadcastPlayer.AcceptType.ARCHIVED
     );
 
+    private static Map<String, BroadcastPlayer.LatencyMode> LATENCY_MODE = MapBuilder.of(
+        "low", BroadcastPlayer.LatencyMode.LOW,
+        "high", BroadcastPlayer.LatencyMode.HIGH
+    );
+
     public static final String REACT_CLASS = "BambuserPlayerView";
 
     @Override
@@ -66,6 +71,12 @@ public class BambuserPlayerViewViewManager extends ViewGroupManager<BambuserPlay
     public void setRequiredBroadcastState(BambuserPlayerView view, String requiredBroadcastState) {
         BroadcastPlayer.AcceptType acceptType = REQUIRED_BROADCAST_STATE.get(requiredBroadcastState);
         view.setRequiredBroadcastState(acceptType);
+    }
+
+    @ReactProp(name = "latencyMode")
+    public void setLatencyMode(BambuserPlayerView view, String latencyMode) {
+        BroadcastPlayer.LatencyMode mode = LATENCY_MODE.get(latencyMode);
+        view.setLatencyMode(mode);
     }
 
     @ReactProp(name = "play")

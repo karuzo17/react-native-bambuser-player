@@ -21,6 +21,7 @@
 @property (nonatomic) NSString *videoScaleMode;
 @property (nonatomic) NSString *ignoreSilentSwitch;
 @property (nonatomic) NSString *requiredBroadcastState;
+@property (nonatomic) NSString *latencyMode;
 @property (nonatomic) BOOL timeShiftMode;
 @property (nonatomic) float volume;
 @property (nonatomic) float duration;

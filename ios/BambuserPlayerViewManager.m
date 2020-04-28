@@ -53,6 +53,10 @@ RCT_CUSTOM_VIEW_PROPERTY(requiredBroadcastState, NSString, BambuserPlayerView) {
   [view setRequiredBroadcastState:json];
 }
 
+RCT_CUSTOM_VIEW_PROPERTY(latencyMode, NSString, BambuserPlayerView) {
+  [view setLatencyMode:json];
+}
+
 RCT_CUSTOM_VIEW_PROPERTY(play, BOOL, BambuserPlayerView) {
   [view setPlay:true];
 }
